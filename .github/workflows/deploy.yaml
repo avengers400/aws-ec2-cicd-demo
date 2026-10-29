@@ -1,30 +1,4 @@
-name: Build and Push to Amazon ECR via OIDC
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  id-token: write   # Required for requesting the JWT OIDC token
-  contents: read    # Required for actions/checkout
-
-jobs:
-  build-and-push:
-    name: Build and Push to ECR
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Configure AWS Credentials using OIDC
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          audience: sts.amazonaws.com
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: us-east-1 
 
 name: Build and Deploy to EC2
 
