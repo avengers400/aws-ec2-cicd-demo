@@ -22,5 +22,6 @@ jobs:
       - name: Configure AWS Credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
+          audience: sts.amazonaws.com
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: us-east-1 # Replace with your AWS region (e.g., ap-south-1)
+          aws-region: us-east-1 
