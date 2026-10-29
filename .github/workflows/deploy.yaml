@@ -85,8 +85,8 @@ jobs:
 
           ssh -i ~/.ssh/deploy_key \
             -o BatchMode=yes \
-            -o StrictHostKeyChecking=yes \
-            -o UserKnownHostsFile="$HOME/.ssh/known_hosts" \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
             "$EC2_USER@$EC2_HOST" \
             "bash -s -- '$IMAGE' '$AWS_REGION' '$AWS_ACCOUNT_ID'" <<'REMOTE'
           set -euo pipefail
